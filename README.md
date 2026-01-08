@@ -48,11 +48,11 @@ Prerequisites:
     - Delete the logo.svg import statement
     - Delete all the lines of code between the return() in App function
     - Add the following statements in the return()
-    ```
-    <div>
-      <h1>List of Countries</h1>
-    </div>
-    ```
+      ```
+      <div>
+        <h1>List of Countries</h1>
+      </div>
+      ```
     - Verify the output at http://localhost:3000. Now, the React Application is ready.
 
 7. Grouping the jsx file:
@@ -71,14 +71,14 @@ Prerequisites:
 8. Including Page1.jsx reference in App.js:
     - Add ```import Page1 from './pages/Page1.jsx'``` statement
     - Add React tag within the return() so that the contents of Page1.jsx shows up on the screen.
-    ```
-    return(
-      <div>
-        <h1>List of Countries</h1>
-        <Page1 />
-      </div>
-    );
-    ```
+      ```
+      return(
+        <div>
+          <h1>List of Countries</h1>
+          <Page1 />
+        </div>
+      );
+      ```
     - Verify the output at http://localhost:3000.
 
 9. Including the Logic:
@@ -97,20 +97,20 @@ Prerequisites:
       const [countries, setCountries] = useState([]);
       ```
     - Write the logic for fetchCountries() function to fetch the contents of the URL from Step7.3:
-    ```
-    async function fetchCountries() {
-      try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
+      ```
+      async function fetchCountries() {
+        try {
+          const response = await fetch(API_URL);
+          const data = await response.json();
 
-        if(data) {
-          setCountries(data);
+          if(data) {
+            setCountries(data);
+          }
+        } catch(error) {
+          console.log(error);
         }
-      } catch(error) {
-        console.log(error);
       }
-    }
-    ```
+      ```
 
 10. Displaying all the country names that was fetched from the API_URL.
     - Add the following line of code to display the country names:
@@ -137,7 +137,7 @@ Prerequisites:
     - Verify the output at http://localhost:3000.
 
 11. Displaying all the country flags along with names that was fetched from the API_URL.
-    - Add the following lines of code after <h2> tag to renderCountries() function:
+    - Add the following lines of code after h2 tag to renderCountries() function:
       ```
       <img 
         src = {country.flags.png}
