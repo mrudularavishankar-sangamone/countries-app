@@ -1,5 +1,5 @@
-# World Time Display
-This ReactJS app displays all the country names and its flag in the world.
+# Displaying Country Names and Flags
+This React.js application displays the names and flags of all countries in the world.
 
 ## Technologies Used:
 ReactJS - UI framework and interactivity
@@ -42,3 +42,5 @@ Git (to clone the repository)
   npm start
   ```
   The app will open in your browser at http://localhost:3000
+
+  
