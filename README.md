@@ -65,7 +65,9 @@ Prerequisites:
     - Add the ```export default function Page1(){ }``` statement
     - Add the following code inside the Page1() function:
       ```
-      <p> This Page has the logic </p>
+      return (
+        <p> This Page has the logic </p>
+      );
       ```
   
 8. Including Page1.jsx reference in App.js:
@@ -82,19 +84,23 @@ Prerequisites:
     - Verify the output at http://localhost:3000.
 
 9. Including the Logic:
-    - In Page1.jsx file, add useEffect() in order to automatically run the fetchCountries() function when the page appears or when something changes:
+    - In Page1.jsx file, add useEffect() in order to automatically run the fetchCountries() when the page appears or when something changes, i.e., when dependency array, the 2nd argument, changes/has values:
       ```
       useEffect(function() {
         fetchCountries();
       }, []);
       ```
-    - Import the useEffect and useState in-built function from React:
+    - Import the useEffect in-built function from React:
       ```
-      import { useState, useEffect } from 'react';
+      import { useEffect } from 'react';
       ```
     - Add the following code to create an array to store the list of countries, which automatically updates the UI whenever the array changes.
       ```
       const [countries, setCountries] = useState([]);
+      ```
+    - Import the useState in-built function from React:
+      ```
+      import { useState } from 'react';
       ```
     - Write the logic for fetchCountries() function to fetch the contents of the URL from Step7.3:
       ```
