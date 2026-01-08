@@ -19,12 +19,13 @@ Prerequisites:
       ```
       npm -v
       ```
-      If you see a version number (e.g., 10.4.1), npm is installed. If you see an error like: 'npm' is not recognized as an internal or external command, then npm is not installed.
+    - If a version number is displayed (for example, 10.4.1), npm is already installed. You can skip Step 2.
+    - If you see an error such as: ```'npm' is not recognized as an internal or external command```, then npm is not installed. Proceed to Step 2
   
 2. Installing npm:
     - Download Node.js from 'https://nodejs.org/'.
     - Install Node.js by running the installer and follow the prompts.
-    - Verify the installation by running the command in terminal npm -v
+    - Verify the installation by running the ```npm -v``` command in terminal. 
 
 3. Install the React package and its dependencies:
     ```
@@ -54,8 +55,97 @@ Prerequisites:
     ```
     - Verify the output at http://localhost:3000. Now, the React Application is ready.
 
-7. Grouping the jsx files
+7. Grouping the jsx file:
     - Create a folder called pages under src
     - Create a file called pages/Page1.jsx
+    - Create a varible called API_URL and assign the Countries API URL to it.
+      ```
+      const API_URL = 'https://restcountries.com/v3.1/all?fields=name,flags';
+      ```
     - Add the ```export default function Page1(){ }``` statement
-    - 
+    - Add the following code inside the Page1() function:
+      ```
+      <p> This Page has the logic </p>
+      ```
+  
+8. Including Page1.jsx reference in App.js:
+    - Add ```import Page1 from './pages/Page1.jsx'``` statement
+    - Add React tag within the return() so that the contents of Page1.jsx shows up on the screen.
+    ```
+    return(
+      <div>
+        <h1>List of Countries</h1>
+        <Page1 />
+      </div>
+    );
+    ```
+    - Verify the output at http://localhost:3000.
+
+9. Including the Logic:
+    - In Page1.jsx file, add useEffect() in order to automatically run the fetchCountries() function when the page appears or when something changes:
+      ```
+      useEffect(function() {
+        fetchCountries();
+      }, []);
+      ```
+    - Import the useEffect and useState in-built function from React:
+      ```
+      import { useState, useEffect } from 'react';
+      ```
+    - Add the following code to create an array to store the list of countries, which automatically updates the UI whenever the array changes.
+      ```
+      const [countries, setCountries] = useState([]);
+      ```
+    - Write the logic for fetchCountries() function to fetch the contents of the URL from Step7.3:
+    ```
+    async function fetchCountries() {
+      try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+
+        if(data) {
+          setCountries(data);
+        }
+      } catch(error) {
+        console.log(error);
+      }
+    }
+    ```
+
+10. Displaying all the country names that was fetched from the API_URL.
+    - Add the following line of code to display the country names:
+      ```
+      function renderCountries(countries) {
+        const countryElements = [];
+        for (let i = 0; i < countries.length; i++) {
+          const country = countries[i];
+          countryElements.push(
+            <div key={country.name.official}>
+              <h2>{country.name.common}</h2>
+            </div>
+          );
+        }
+        return countryElements;
+      }
+    
+      return (
+        <div>
+          {renderCountries(countries)} 
+        </div>
+      );
+      ```
+    - Verify the output at http://localhost:3000.
+
+11. Displaying all the country flags along with names that was fetched from the API_URL.
+    - Add the following lines of code after <h2> tag to renderCountries() function:
+      ```
+      <img 
+        src = {country.flags.png}
+        //{ Alt attribute is added for accessibility and to satisfy ESLint jsx-a11y requirements }
+        alt = {country.flags.alt} 
+      />
+
+      {/* Horizontal line to separate country entries */}
+      <hr />
+      ```
+    - Verify the output at http://localhost:3000.

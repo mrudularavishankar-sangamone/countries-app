@@ -24,12 +24,14 @@ export default function Page1(){
     }
   }
 
-  return (
-    <div>
-      {countries.map((country) => (
-        <div>
+  function renderCountries(countries) {
+     const countryElements = [];
+    for (let i = 0; i < countries.length; i++) {
+      const country = countries[i];
+      countryElements.push(
+        <div key={country.name.official}>
           <h2>{country.name.common}</h2>
-          <img 
+           <img 
             src = {country.flags.png}
             //{ Alt attribute is added for accessibility and to satisfy ESLint jsx-a11y requirements }
             alt = {country.flags.alt} 
@@ -38,7 +40,14 @@ export default function Page1(){
           {/* Horizontal line to separate country entries */}
           <hr />
         </div>
-      ))} 
+      );
+    }
+    return countryElements;
+  }
+
+  return (
+    <div>
+      {renderCountries(countries)} 
     </div>
   );
 }
