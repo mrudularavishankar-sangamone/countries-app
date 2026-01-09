@@ -2,14 +2,15 @@
 This React.js application displays the names and flags of all countries in the world.
 
 ## Technologies Used:
-ReactJS - UI framework and interactivity
-HTML - Markup structure
-CSS - Styling
+- ReactJS - UI framework and interactivity
+- HTML - Markup structure
+- CSS - Styling
 
-### Setup/Installation
-Prerequisites:
-  Node.js (v14 or higher) and npm installed on your machine
-  Git (to clone the repository)
+## Setup/Installation
+
+### Prerequisites:
+- Node.js (v14 or higher) and npm installed on your machine.
+- Git (to clone the repository).
 
 ### Steps:
 1. Verify if npm is installed in your device/workspace(for Windows)
